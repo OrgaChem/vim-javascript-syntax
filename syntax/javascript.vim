@@ -1,13 +1,8 @@
 " Vim syntax file
-" Language:     JavaScript
-" Maintainer:   Jose Elera Campana <https://github.com/jelera>
-" Last Change:  February 6, 2012
-" Version:      0.7.9
-" Changes:      Go to https://github.com/jelera/vim-javascript-syntax for
-"               recent changes.
-" Credits:      Zhao Yi, Claudio Fleiner, Scott Shattuck (This file is based
-"               on their hard work), gumnos (From the #vim IRC Channel in
-"               Freenode)
+" Maintainer:   OrgaChem <https://github.com/OrgaChem>
+" Credits:      Jose Elera Campana, Zhao Yi, Claudio Fleiner, Scott Shattuck
+"               (This file is based on their hard work), gumnos (From the #vim
+"               IRC Channel in Freenode)
 
 if !exists("main_syntax")
   if version < 600
