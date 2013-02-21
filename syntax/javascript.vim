@@ -178,8 +178,9 @@ if !exists("javascript_ignore_javaScriptdoc")
   "unlet b:current_syntax
 
   syntax cluster javaScriptDocObjects contains=javaScriptType,javaScriptExceptionObjects,javaScriptDomObjects,javaScriptGlobalObjects
-  syntax region javaScriptDoclet matchgroup=javaScriptComment start="/\*\*\n\?"  end="\*/" contains=javaScriptDocTag,javaScriptDocInlineTag,@javaScriptHtml,@Spell skipwhite skipnl
-  syntax match  javaScriptDocTag contained "\s@" nextgroup=javaScriptDocTypeParamDescTagNames,javaScriptDocTypeDescTagNames,javaScriptDocTypeTagNames,javaScriptDocDescTagNames,javaScriptDocMarkerTagNames,javaScriptDocSuppressTagNames,javaScriptDocAuthorTagNames
+  syntax region javaScriptDoclet matchgroup=javaScriptComment start="/\*\*\n"  end="\*/" contains=javaScriptDocTag,javaScriptDocInlineTag,@javaScriptHtml,@Spell skipwhite skipnl
+  syntax region javaScriptOneLinerDoclet matchgroup=javaScriptComment start="/\*\*\s"  end="\s\*/" contains=javaScriptDocTag,javaScriptDocInlineTag,@javaScriptHtml,@Spell skipwhite skipnl
+  syntax match  javaScriptDocTag contained "@" nextgroup=javaScriptDocTypeParamDescTagNames,javaScriptDocTypeDescTagNames,javaScriptDocTypeTagNames,javaScriptDocDescTagNames,javaScriptDocMarkerTagNames,javaScriptDocSuppressTagNames,javaScriptDocAuthorTagNames
 
   " Type param desc tag as: @param {type} param desc
   " Type desc tag as: @return {type} desc
@@ -207,8 +208,8 @@ if !exists("javascript_ignore_javaScriptdoc")
   syntax region  javaScriptDocTypeDesc                contained matchgroup=javaScriptDocOperator start="{" end="}" contains=javaScriptDocNameContent,javaScriptDocTypeContent,javaScriptDocGenerics nextgroup=javaScriptDocDesc
   syntax region  javaScriptDocTypeParamDescTagType    contained matchgroup=javaScriptDocOperator start="{" end="}" contains=javaScriptDocNameContent,javaScriptDocTypeContent,javaScriptDocGenerics nextgroup=javaScriptDocTypeParamDescTagParam skipwhite skipnl
   syntax match   javaScriptDocTypeParamDescTagParam   contained "\%(\w\|_\|\$\)\%(\w\|\d\|_\|\$\)*" nextgroup=javaScriptDocDesc skipwhite skipnl
-  syntax match   javaScriptDocDesc                    contained ".*$" contains=javaScriptDocInlineTag
-  syntax match   javaScriptDocInvaliedDesc            contained ".*$"
+  syntax match   javaScriptDocDesc                    contained ".*\(\s\|\n\)" contains=javaScriptDocInlineTag
+  syntax match   javaScriptDocInvaliedDesc            contained ".*"
 
   syntax region  javaScriptDocSuppressFlag            contained matchgroup=javaScriptDocOperator start="{" end="}" contains=javaScriptDocSuppressFlagContent
   syntax keyword javaScriptDocSuppressFlagContent     contained accessControls ambiguousFunctionDecl checkDebuggerStatement checkRegExp checkTypes checkVars const constantProperty deprecated duplicate es5Strict externsValidation fileoverviewTags globalThis internetExplorerChecks invalidCasts missingProperties nonStandardJsDocs strictModuleDepCheck suspiciousCode undefinedNames undefinedVars unknownDefines uselessCode visibility
